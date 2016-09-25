@@ -183,7 +183,7 @@
 		"name": "SOURCE_REPOSITORY_URL",
 		"displayName": "Git Repository URL",
 		"description": "The URL of the repository with your application source code.",
-		"value": "https://github.com/BCDevExchange/simple-shiny-test"
+		"value": "https://github.com/ArctiqTeam/openshift/tree/master/testing/s2itest"
 	},{
 		"name": "SOURCE_REPOSITORY_REF",
 		"displayName": "Git Reference",
