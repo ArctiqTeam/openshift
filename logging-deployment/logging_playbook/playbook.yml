@@ -3,5 +3,5 @@
     hosts: es-nodes
     user: root
     roles:
-      - { role: es-gluster }
+      - { role: es_gluster }
 ...
