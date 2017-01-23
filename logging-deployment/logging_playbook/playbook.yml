@@ -1,0 +1,7 @@
+---
+  - name: logging_playbook
+    hosts: es-nodes
+    user: root
+    roles:
+      - { role: es-gluster }
+...

@@ -1,0 +1,34 @@
+---
+- name: label each node
+  local_action: command oc label node "{{ inventory_hostname }}" logging-es-node="{{ label_number }}" --overwrite
+
+- name: mount es volume
+  mount:
+    name: "{{ local_es_path }}"
+    src: "{{ remote_mount }}{{ label_number }}"
+    fstype: "{{ mount_type }}"
+    opts: "{{ fs_opts }}"
+    state: mounted
+
+- block:
+    - name: umount loop device if it is present
+      mount:
+        name: "{{ local_loop_path }}"
+        state: unmounted
+    - name: clean up volume
+      shell: /bin/rm -rf {{ local_es_path }}/*
+    - name: create file for mounting
+      command: truncate -s "{{ es_size }}" "{{ local_es_path }}"/elasticsearch-"{{ label_number }}"
+    - name: create filesystem
+      command: mkfs.xfs -f "{{ local_es_path }}"/elasticsearch-"{{ label_number }}"
+    - name: mount file
+      mount:
+        src: '{{ local_es_path }}/elasticsearch-{{ label_number }}'
+        name: "{{ local_loop_path }}"
+        fstype: xfs
+        opts: loop
+        state: mounted
+    - name: set permissions
+      command: chown 1000:1000 "{{ local_loop_path }}"
+  when: reset == "yes"
+...

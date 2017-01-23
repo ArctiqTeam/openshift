@@ -1,0 +1,4 @@
+[es-nodes]
+#host1.local label_number="1"
+#host2.local label_number="2"
+#host3.local label_number="3"
