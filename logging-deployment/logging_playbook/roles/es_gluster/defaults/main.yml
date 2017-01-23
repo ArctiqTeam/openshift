@@ -3,7 +3,7 @@ reset: "no"
 local_es_path: /mnt/es-storage
 local_loop_path: /usr/local/es-storage
 mount_type: nfs
-remote_mount: 10.100.1.250:/nfsmount/ose-es-10G-0 #IP and mount prefix to be used. the last number will be added during execution. 
+remote_mount: <someIP>:<some_path> #IP and mount prefix to be used. the last number will be added during execution. 
 #fs_opts: defaults ## Use for GlusterFS
 fs_opts: defaults ## Use for NFS
 es_size: 5G
