@@ -20,7 +20,7 @@ oc project default
 oc export secret router-certs -o yaml > router-certs.backup.$date.yaml
 
 # Create a pem file with the new files
-cat $NEW_CERT $NEW_PRIVATE_KEY $NEW_CA_CERT > $NEW_PEM
+cat $NEW_CERT $NEW_CA_CERT > $NEW_PEM
 
 # Remove existing secret
 oc delete secret router-certs
