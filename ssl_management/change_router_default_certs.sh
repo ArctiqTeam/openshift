@@ -29,7 +29,7 @@ oc delete secret router-certs
 oc secrets new router-certs tls.crt=$NEW_PEM tls.key=$NEW_PRIVATE_KEY --type='kubernetes.io/tls' --confirm
 
 # Redeploy router pods
-oc deploy dc/router --latest
+oc rollout latest dc/router
 
 # Clean up temp file
 rm $NEW_PEM
