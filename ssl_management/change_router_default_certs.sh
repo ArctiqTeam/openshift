@@ -1,4 +1,6 @@
 #!/bin/bash
+
+## Author: shea.stewart@arctiq.ca
 ## This script is intended to replace the default SSL certificate assigned to the
 ## OpenShift router pods. It will also add the default certificate into the
 ## REGISTRY CONSOLE pod.
